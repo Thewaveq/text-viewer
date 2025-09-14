@@ -2,35 +2,41 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 body {
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 15vh;
+    justify-content: space-between; /* Push content and controls apart */
     align-items: center;
     font-family: monospace;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    box-sizing: border-box;
+    padding: 20px;
 }
 
 #screen-canvas {
     width: 60vmin;
     height: 60vmin;
+    max-width: 100%; /* Ensure canvas does not overflow */
     background-color: #ffffff;
     box-sizing: border-box;
 }
 
 .input-container {
-    margin-top: 20px; /* Adjusted margin */
+    width: 100%;
+    max-width: 600px; /* Optional: constrain max width on large screens */
+    margin-top: 20px;
     display: flex;
-    flex-direction: column; /* Changed to column */
+    flex-direction: column;
     align-items: center;
 }
 
 #text-input {
-    width: 60vmin; /* Match canvas width */
-    height: 80px;
+    width: 100%; /* Full width of container */
+    height: 100px; /* Increased height */
     padding: 15px 20px;
     border: 1px solid #555;
     border-radius: 10px;
@@ -39,13 +45,16 @@ body {
     font-size: 1em;
     outline: none;
     resize: none;
-    box-sizing: border-box; /* Added for consistency */
+    box-sizing: border-box;
 }
 
 .controls {
     margin-top: 10px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap; /* Allow controls to wrap */
+    justify-content: center; /* Center wrapped items */
+    gap: 10px; /* Add space between controls */
 }
 
 #resolution-selector,
