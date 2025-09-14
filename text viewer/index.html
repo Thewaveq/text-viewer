@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Печатающийся текст</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <canvas id="screen-canvas"></canvas>
+    <div class="input-container">
+        <textarea id="text-input" placeholder="Введите ваш текст здесь..."></textarea>
+        <div class="controls">
+            <select id="resolution-selector">
+                <option value="480">480p</option>
+                <option value="720" selected>720p</option>
+                <option value="1080">1080p</option>
+                <option value="1440">1440p</option>
+            </select>
+            <select id="align-selector">
+                <option value="left" selected>Слева</option>
+                <option value="center">По центру</option>
+                <option value="right">Справа</option>
+                <option value="justify">По ширине</option>
+            </select>
+            <select id="effect-selector">
+                <option value="typewriter" selected>Печатание</option>
+                <option value="fade">Появление</option>
+                <option value="fly-in">Вылет</option>
+                <option value="zoom">Увеличение</option>
+            </select>
+            <button id="play-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+            <button id="record-button">Запись</button>
+            <button id="stop-button" disabled>Стоп</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
