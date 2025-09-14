@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- DOM Elements ---
     const playButton = document.getElementById('play-button');
     const recordButton = document.getElementById('record-button');
-    const stopButton = document.getElementById('stop-button');
     const textInput = document.getElementById('text-input');
     const resolutionSelector = document.getElementById('resolution-selector');
     const alignSelector = document.getElementById('align-selector');
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Event Listeners ---
     playButton.addEventListener('click', () => handleAnimation(false));
     recordButton.addEventListener('click', () => handleAnimation(true));
-    stopButton.addEventListener('click', stopAnimation);
 
     // --- Main Handler ---
     function handleAnimation(isRecording) {
@@ -36,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!text) return;
 
         isAnimating = true;
+        playButton.disabled = true;
+        recordButton.disabled = true;
+
         const resolution = parseInt(resolutionSelector.value, 10);
         canvas.width = resolution;
         canvas.height = resolution;
@@ -79,8 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Recording ---
     function startRecording() {
-        recordButton.disabled = true;
-        stopButton.disabled = false;
         const stream = canvas.captureStream(30);
         mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
         mediaRecorder.ondataavailable = e => e.data.size > 0 && recordedChunks.push(e.data);
@@ -93,8 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
             a.click();
             window.URL.revokeObjectURL(url);
             recordedChunks = [];
-            stopButton.disabled = true;
-            recordButton.disabled = false;
             setCanvasDisplaySize();
         };
         mediaRecorder.start();
@@ -102,12 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function stopAnimation() {
         isAnimating = false;
+        playButton.disabled = false;
+        recordButton.disabled = false;
         cancelAnimationFrame(animationFrameId);
         if (mediaRecorder && mediaRecorder.state === 'recording') {
             mediaRecorder.stop();
         } else {
-            stopButton.disabled = true;
-            recordButton.disabled = false;
             setCanvasDisplaySize();
         }
     }
