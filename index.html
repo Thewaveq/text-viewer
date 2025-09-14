@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -30,9 +30,13 @@
                 <option value="fly-in">Вылет</option>
                 <option value="zoom">Увеличение</option>
             </select>
-            <button id="play-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></button>
+            <select id="speed-selector">
+                <option value="0.5">Быстро</option>
+                <option value="1" selected>Нормально</option>
+                <option value="1.5">Медленно</option>
+            </select>
+            <button id="play-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> <span>Play</span></button>
             <button id="record-button">Запись</button>
-            <button id="stop-button" disabled>Стоп</button>
         </div>
     </div>
     <script src="script.js"></script>
